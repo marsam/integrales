@@ -1,0 +1,746 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                             integrales.tex                                  %
+%                                                                             %
+%      Esta obra  está bajo una  licencia de  Creative Commons Atribución 2.1 %
+% España. Para ver una copia de la misma visita                               %
+%              http://creativecommons.org/licenses/by/2.1/es/                 %
+% o escribe una carta a Creative Commons, 559 Nathan Abbott Way, Stanford,    %
+% California 94305, USA.                                                      %
+%                                                                             %
+%    Copyright (c) 2004 by Salvador Blasco Llopis    (Some rights reserved)   %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[spanish,fleqn,leqno]{article}
+
+\usepackage[spanish]{babel}
+\usepackage{amsmath,amssymb}
+%\usepackage{anysize}
+\usepackage[latin1]{inputenc}
+\usepackage[dvips]{graphicx}
+
+\begin{document}
+\newcommand{\inv}[1]{\frac{1}{#1}}
+
+\newcommand{\arctanh}{\textnormal{arctanh}}
+\newcommand{\arcsenh}{\textnormal{arcsenh}}
+\newcommand{\arccosh}{\textnormal{arccosh}}
+\newcommand{\arccoth}{\textnormal{arccoth}}
+\newcommand{\arcsech}{\textnormal{arcsech}}
+\newcommand{\arccsch}{\textnormal{arccsch}}
+\newcommand{\sech}   {\textnormal{sech}}
+\newcommand{\csch}   {\textnormal{csch}}
+\newcommand{\ctanh}  {\textnormal{ctanh}}
+\newcommand{\arccot} {\textnormal{arccot}}
+\newcommand{\erf}    {\textnormal{erf}}
+
+\addtolength{\voffset}{-2cm}
+\addtolength{\textheight}{2cm}
+
+\title{\Huge Formulario de integrales}
+\author{\copyright 2001-2005 Salvador Blasco Llopis}
+\date{}
+\maketitle
+
+{\it Este formulario puede ser copiado y distribuido libremente bajo
+ la licencia Creative Commons Atribución 2.1 España. }
+%\\[5mm]
+\begin{center}
+ \begin{minipage}{0.4\textwidth}
+  \includegraphics{somerights20}
+ \end{minipage}%
+ \begin{minipage}{0.4\textwidth}
+  \begin{flushright}
+   \tiny
+   Séptima revisión: Febrero 2005 \\
+   Sexta revisi\'on: Julio 2003\\
+   Quinta revisi\'on: Mayo 2002\\
+   Cuarta revisi\'on: Mayo 2001\\
+   Tercera revisi\'on: Marzo 2001
+  \end{flushright}
+ \end{minipage}
+\end{center}
+
+\section{Integrales indefinidas}
+\subsection{Funciones racionales e irracionales}
+\subsubsection{Contienen $ax+b$}
+\begin{equation}
+\int (ax+b)^n dx = \frac{1}{a(n+1)} (ax+b)^{n+1} + C, \quad n \ne 1
+\end{equation}
+%
+\begin{equation}
+\int \frac{dx}{ax+b} = \frac{1}{a} \ln \left| ax+b \right| + C
+\end{equation}
+%
+\begin{equation}
+\int \frac{dx}{x(ax+b)} = \inv{a} \ln \left| \frac{x}{ax+b} \right| + C
+\end{equation}
+%
+\begin{equation}
+\int \frac{dx}{(1+\epsilon x)^2}=-\frac1\epsilon\cdot\frac1{1+\epsilon x}+C
+\end{equation}
+%
+\begin{equation}
+\int \frac{xdx}{(1+bx)^3}=-\frac1{2b}\cdot\frac2{(1+bx)^2}-\frac1{2b}\cdot\frac1{1+bx}+C
+\end{equation}
+
+\subsubsection{Contienen $\sqrt{ax+b}$}
+\begin{equation}
+\int x \sqrt{a+bx} dx = \frac{2(3bx-2a)(a+bx)^{3/2}}{15b^2}+C
+\end{equation}
+%
+\begin{equation}
+\int \frac{x}{\sqrt{a+bx}} dx = \frac{2(bx-2a)\sqrt{a+bx}}{3b^2}+C
+\end{equation}
+%
+\begin{equation}
+\int \frac{dx}{x\sqrt{a+bx}} =
+   \begin{cases}
+       \frac{1}{\sqrt{a}} \ln \left| \frac{\sqrt{a+bx}-\sqrt{a}}
+                                 {\sqrt{a+bx}+\sqrt{a}}\right| + C, \quad a>0\\
+       \frac{2}{\sqrt{-a}} \arctan{\sqrt{\frac{a+bx}{-a}}}+C, \quad a<0
+   \end{cases}
+\end{equation}
+%
+\begin{equation}
+\int \frac{\sqrt{a+bx}}{x}dx=2\sqrt{a+bx} + a \int \frac{dx}{x\sqrt{a+bx}} + C
+\end{equation}
+
+\subsubsection{Contienen $x^2 \pm a^2$}
+\begin{equation}
+\int \frac{dx}{a^2+x^2} = \inv{a} \arctan \frac{x}{a} + C, \quad a>0
+\end{equation}
+%
+\begin{equation}
+\int \frac{x dx}{(x^2 \pm a^2)^{3/2}} = \inv{\sqrt{x^2 \pm a^2}} +C
+\end{equation}
+
+\subsubsection{Contienen $a^2-x^2, \quad x<a$}
+\begin{equation}
+\int (a^2-x^2)^{3/2} dx = \frac{x}{2} \sqrt{a^2-x^2} + \frac{a^2}{2} \arcsen
+\frac{x}{a} + C, \quad a>0
+\end{equation}
+%
+\begin{equation}
+\int \frac{dx}{a^2-x^2} = \inv{2a} \ln \left| \frac{a+x}{a-x} \right | + C =
+\inv{a} \arctanh \frac{x}{a}
+\end{equation}
+%
+\begin{equation}
+\int \frac{dx}{(a^2-x^2)^{3/2}} = \frac{x}{a^2 \sqrt{a^2-x^2}} + C
+\end{equation}
+
+\subsubsection{Contienen $\sqrt{x^2 \pm a^2}$ }
+\begin{eqnarray}
+ \int \sqrt{x^2 \pm a^2} dx &=&
+ \inv{2} \left(
+     x\sqrt{a^2 \pm x^2} +
+     a^2 \ln \left| x + \sqrt{a^2 \pm x^2} \right|
+ \right) + C = \\ &=&
+ \begin{cases}
+     \inv 2 x\sqrt{a^2+x^2} + \frac{a^2}{2}\arcsenh x + C & (+) \\
+     \inv{2} x\sqrt{a^2-x^2} + \frac{a^2}{2}\arccosh x + C & (-)
+ \end{cases} \nonumber
+\end{eqnarray}
+%
+\begin{equation}
+\int x\sqrt{x^2\pm a^2} dx=\inv{3} (x^2\pm a^2)^{3/2} +C
+\end{equation}
+%
+\begin{equation}
+\int x^3\sqrt{x^2 + a^2} dx=(\inv{5}x^2-\frac{2}{5}a^2)(a^2+x^2)^{3/2}+C
+\end{equation}
+%
+\begin{equation}
+\int {\frac{\sqrt{x^2-a^2}}{x}}dx=\sqrt{x^2-a^2}-a\cdot\arccos{\frac{a}{|x|}}+C
+\end{equation}
+%
+\begin{equation}
+\int \frac{dx}{\sqrt{x^2+a^2}}=a\cdot\arcsenh{\frac{x}{a}}+C
+\end{equation}
+%
+\begin{equation}
+\int \frac{dx}{\sqrt{x^2-a^2}} = \ln \left| x+\sqrt{x^2-a^2}\right| + C =
+\arccosh\frac{x}{a}+C,
+\quad (a>0)
+\end{equation}
+%
+\begin{equation}
+\int \frac{dx}{x\sqrt{x^2-a^2}} = \inv{a} \arccos\frac{a}{|x|}+C,\quad (a>0)
+\end{equation}
+%
+\begin{equation}
+\int \frac{dx}{x^2\sqrt{x^2\pm a^2}} = \mp \frac{\sqrt{x^2\pm a^2}}{a^2 x}+C
+\end{equation}
+%
+\begin{equation}
+\int \frac{x dx}{x^2\pm a^2} = \sqrt{x^2\pm a^2} + C
+\end{equation}
+%
+\begin{equation}
+\int \frac{\sqrt{x^2 \pm a^2}}{x^4} dx= \mp \frac{(a^2+x^2)^{3/2}}{3a^2x^3}+C
+\end{equation}
+%
+\begin{equation}
+\int \frac{x^2}{\sqrt{x^2-a^2}}dx=\frac{x}{2}\sqrt{x^2-a^2}-\frac{a^2}{2}\arccosh\frac{x}{a}+C
+\end{equation}
+
+\subsubsection{Contienen $\sqrt{a^2\pm x^2}$}
+\begin{equation}
+\int \sqrt{a^2-x^2}dx=\inv 2 x\sqrt{a^2-x^2}-\frac{a^2}{2} \arcsen\frac{x}{a}+C, \quad(a>0)
+\end{equation}
+%
+\begin{equation}
+\int x\sqrt{a^2\pm x^2}dx= \pm \inv{3}(a^2\pm x^2)^{3/2}+C
+\end{equation}
+%
+\begin{equation}
+\int x^2\sqrt{a^2-x^2} dx=
+\frac{x}{8}(2x^2-a^2)\sqrt{a^2-x^2}+\frac{a^2}{8}\arcsen\frac{x}{a}+C, \quad a>0
+\end{equation}
+%
+\begin{equation}
+\int \frac{\sqrt{a^2\pm x^2}}{x}dx=\sqrt{a^2\pm x^2} -a\ln \left|\frac{a+\sqrt{a^2\pm
+x^2}}{x}\right|+C
+\end{equation}
+%
+\begin{equation}
+\int \frac{dx}{x^2 \sqrt{a^2-x^2}}=\frac{-\sqrt{a^2-x^2}}{a^2 x}+C
+\end{equation}
+%
+\begin{equation}
+\int \frac{dx}{\sqrt{a^2-x^2}}=\arcsen\frac{x}{a}+C, \quad a>0
+\end{equation}
+\begin{equation}
+\int \frac{dx}{x\sqrt{a^2-x^2}}=-\inv a \ln \left|\frac{a+\sqrt{a^2-x^2}}{x}\right| +C
+\end{equation}
+\begin{equation}
+\int \frac{x}{\sqrt{a^2 \pm x^2}}dx=\pm \sqrt{a^2\pm x^2}+C
+\end{equation}
+\begin{equation}
+\int \frac{x^2}{\sqrt{a^2\pm x^2}}dx=\pm \frac{x}{2}\sqrt{a^2\pm x^2}\mp \frac{a^2}{2}
+\arcsen\frac{x}{a}+C, \quad a>0
+\end{equation}
+\begin{equation}
+\int \frac{dx}{\sqrt{a^2+x^2}}=\ln \left( x+ \sqrt{a^2+x^2} \right)+C =\arcsenh\frac{x}{a}+C,
+\quad a>0
+\end{equation}
+
+\subsubsection{Contienen $ax^2+bx+c$}
+\begin{equation}
+  \int \frac{dx}{ax^2+bx+c}=
+  \begin{cases}
+        \inv{\sqrt{b^2-4ac}}\ln \left|
+          \frac{2ax+b-\sqrt{b^2-4ac}}{2ax+b+\sqrt{b^2-4ac}}
+          \right| = &  \\
+        = \frac{2}{\sqrt{b^2-4ac}}\arctanh\frac{2ax+b}{\sqrt{b^2-4ac}}+C, & b^2>4ac \\
+        \frac{2}{\sqrt{4ac-b^2}}\arctan\frac{2ax+b}{\sqrt{4ac-b^2}}+C, & b^2<4ac \\
+        -\frac{2}{2ax+b}+C, & b^2=4ac
+  \end{cases}
+\end{equation}
+\begin{equation}
+\int \frac{x}{ax^2+bx+c}dx=\inv{2a} \ln \left| ax^2+bx+c \right| -
+\frac{b}{2a}\int\frac{dx}{ax^2+bx+c}+C
+\end{equation}
+%
+\begin{multline}
+ \int\frac{x\cdot dx}{(ax^2+bx+c)^n}= \frac{bx+2c}{(b^2-4ac)(n-1)(ax^2+bx+c)^{n-1}}+
+ \\+\frac{b(2n-3)}{(b^2-4ac)(n-1)}\int \frac{dx}{(ax^2+bx+c)^{n-1}},\quad n\ne 0,1,\quad
+ b^2<4ac
+\end{multline}
+%
+\begin{multline}
+ \int \frac{dx}{(ax^2+bx+c)^n}=\frac{2ax+b}{-(b^2-4ac)(n-1)(ax^2+bx+c)^{n-1}}+\qquad\\
+ +\frac{2a(2n-3)}{-(b^2-4ac)(n-1)}\int\frac{dx}{(ax^2+bx+c)^{n-1}}, \quad n \ne
+ 0,1, \quad b^2<4ac
+\end{multline}
+
+\subsubsection{Contienen $\sqrt{ax^2+bx+c}$}
+\begin{equation}
+ \int \sqrt{ax^2+bx+c}dx=\frac{2ax+b}{4a}\sqrt{ax^2+bx+c}
+ +\frac{4ac-b^2}{8a}\int\frac{dx}{\sqrt{ax^2+bx+c}}
+\end{equation}
+%
+\begin{equation}
+  \int \frac{a_0+a_1 x +\ldots+ a_n x^n}{\sqrt{ax^2+bx+c}}dx \quad
+   \textnormal{ Ver \S\ref{aleman}, pág.~\pageref{aleman}: método alemán}
+ % =(b_0+b_1 x+ \ldots+
+ %b_{n-1}x^{n-1})\sqrt{ax^2+bx+c}  + b_n \int \frac{dx}{ax^2+bx+c}
+ %\end{equation}
+ %\indent Dados los coeficientes $a_0, a_1, \ldots, a_b$ los $b_0, b_1, \ldots, b_n$ se
+ % obtienen de
+ %\begin{equation}
+ %\frac{a_0+a_1 x +\ldots+ a_n x^n}{\sqrt{ax^2+bx+c}}=\frac{d}{dx}\left[(b_0+b_1 x+ \ldots  +
+ %b_{n-1}x^{n-1})\sqrt{ax^2+bx+c}\right]  \nonumber + \frac{b_n }{ax^2+bx+c}
+\end{equation}
+%
+\begin{multline}
+ \int \frac{dx}{\sqrt{ax^2+bx+c}}=\inv{\sqrt{a}} \ln \left|
+ 2ax+b+\sqrt{a}\sqrt{ax^2+bx+c}\right| +C = \\
+ \begin{cases}
+  \inv{\sqrt{a}}\arcsenh\frac{2ax+b}{\sqrt{4ac-b^2}}+C, & \Delta<0, a>0; \\
+  \inv{\sqrt{a}} \ln |2ax+b|+C , & \Delta = 0, a>0; \\
+  \inv{-\sqrt{-a}}\arcsen\frac{2ax+b}{\sqrt{b^2-4ac}}+C, & \Delta>0, a<0;
+ \end{cases}
+ \, , \quad \Delta=b^2-4ac
+\end{multline}
+%
+\begin{equation}
+\int \frac{x}{\sqrt{ax^2+bx+c}}dx=\frac{\sqrt{ax^2+bx+c}}{a}-\frac{b}{2a}\int
+\frac{dx}{\sqrt{ax^2+bx+c}}
+\end{equation}
+\begin{equation}
+\int \frac{dx}{x\sqrt{ax^2+bx+c}}=
+\begin{cases}
+\frac{-1}{\sqrt{c}} \ln \left| \frac{2\sqrt{c}\sqrt{ax^2+bx+c}+bx+2c}{x} \right|+C, & c>0\\
+\frac{1}{\sqrt{-c}} \arcsen \frac{bx+2c}{|x|\sqrt{b^2-4ac}}+C, & c<0
+\end{cases}
+\end{equation}
+
+\subsection{Funciones trigonom\'etricas}
+\subsubsection{Contienen $\sen ax$}
+\begin{equation}
+\int \frac{dx}{\sen ax}=\inv a \ln \left| \tan \frac{ax}{2} \right| +C
+\end{equation}
+%
+\begin{equation}
+\int \sen^2 ax dx = \inv 2 \cdot \frac{ax-\cos ax \cdot \sen ax}{a}+C =
+  \frac{x}2-\frac{\sen2ax}{4a}+C
+\end{equation}
+%
+\begin{equation}
+\int \sen^n ax dx =-\frac{\sen^{n-1}ax\cdot \cos ax}{a\cdot
+n}+\frac{n-1}{n}\int\sen^{n-2}axdx, \quad n \ne 0, -1;
+\end{equation}
+\begin{equation}
+\int \sen ax \sen bx dx=-\inv 2 \frac{\cos(a+b)x}{a+b}-\inv 2 \frac{\cos(a-b)x}{a-b}+C, \quad
+a^2\ne b^2
+\end{equation}
+\begin{equation}
+\int x^n \sen ax dx = -\inv a x^n \cos ax+ \frac{n}{a} \int x^{n-1} \cos ax dx
+\end{equation}
+\begin{equation}
+\int \frac{\sen ax}{x} dx = \sum_{\nu=0}^\infty \frac{(ax)^{2\nu-1}}{(2\nu-1)\cdot(2\nu-1)!}
+\end{equation}
+\begin{equation}
+\int \frac{dx}{1 \pm \sen ax} = \inv{a} \tan \left( \frac{ax}{2} \mp \frac{\pi}{4} \right)+C
+\end{equation}
+
+\subsubsection{Contienen $\cos ax$}
+\begin{equation}
+\int \cos^2 axdx = \inv 2 \cdot \frac{ax+\cos ax\cdot \sen ax}{a}+C
+\end{equation}
+\begin{equation}
+\int \frac{dx}{\cos ax}=\inv{a} \ln \left| \tan \left( \frac{ax}{2}-\frac{\pi}{4} \right)
+\right|+C
+\end{equation}
+\begin{equation}
+\int \frac{\cos ax}{x} dx = \ln |ax|+ \sum_{\nu=1}^\infty (-1)^\nu
+\frac{(ax)^{2\nu}}{(2\nu)\cdot(2\nu)!}+C
+\end{equation}
+\begin{equation}
+\int \cos^n ax dx =\frac{\cos^{n-1}ax\cdot \sen ax}{a\cdot
+n}+\frac{n-1}{n}\int\cos^{n-2}axdx+C, \quad n \ne 0, -1;
+\end{equation}
+\begin{equation}
+\int \cos ax \cos bx dx=-\inv 2 \frac{\sen(a-b)x}{a-b}+\inv 2 \frac{\sen(a+b)x}{a+b}+C,
+\quad a^2\ne b^2
+\end{equation}
+\begin{equation}
+\int x^n \cos ax dx = \inv a x^n \sen ax- \frac{n}{a} \int x^{n-1} \sen ax dx+C,\quad n \ne -1
+\end{equation}
+\begin{equation}
+\int \frac{dx}{1 \pm \cos ax} =\pm \inv{a} \tan \frac{ax}{2} +C
+\end{equation}
+
+\subsubsection{Contienen $\tan ax$ o $\cot ax$}
+\begin{equation}
+\int \tan ax dx=-\inv a \ln \cos ax+C
+\end{equation}
+\begin{equation}
+\int \tan^2 x dx=\tan x-x+C
+\end{equation}
+\begin{equation}
+\int \tan^n ax dx = \frac{\tan^{n-1}ax}{a(n-1)}-\int\tan^{n-2}ax dx, \quad n\ne 1,0;
+\end{equation}
+\begin{equation}
+\int \cot ax dx =\inv a \ln \sen ax + C
+\end{equation}
+\begin{equation}
+\int \cot^n ax dx = -\frac{\cot^{n-1}ax}{a(n-1)}-\int\cot^{n-2}ax dx+C, \quad n \ne 1,0;
+\end{equation}
+
+\subsubsection{Contienen $\sec ax$ o $\csc ax$}
+\begin{equation}
+\int \sec ax dx=\inv{a}\left[ \ln\left(\cos\frac{ax}{2}+\sen\frac{ax}{2}\right)-
+\ln\left(\cos\frac{ax}{2}-\sen\frac{ax}{2}\right)\right]+C
+\end{equation}
+\begin{equation}
+\int \sec^2 ax dx=\inv a \tan ax+C
+\end{equation}
+\begin{equation}
+\int \sec^n x dx=\inv a \frac{\tan ax\cdot\sec^{n-2}ax}{n-1}+\inv{a}\frac{n-2}{n-1}\inv
+\sec^{n-2}ax\cdot dx+C, \quad n \ne 1;
+\end{equation}
+\begin{equation}
+\int \csc^2 ax dx=-\inv a \cot ax +C
+\end{equation}
+\begin{equation}
+\int \csc^n ax dx=-\inv a \frac{\cot ax\cdot
+\csc^{n-2}}{n-1}+\inv{a}\cdot\frac{n-2}{n-1}\int\csc^{n-2}ax\cdot dx+C,\quad n \ne 1;
+\end{equation}
+
+\subsubsection{Varias funciones}
+\begin{equation}
+\int \sec x\cdot\tan ax\cdot dx= \sec x +C
+\end{equation}
+\begin{equation}
+\int \csc x\cdot\cot x\cdot dx=-\csc x+C
+\end{equation}
+\begin{equation}
+\int \cos^m x\cdot\sen^n x\cdot dx=
+\begin{cases}
+\frac{cos^{m-1}x\cdot\sen^{n+1}x}{m+n}+\frac{m-1}{m+n}\int\cos^{m-2}x\cdot\sen^n x\cdot dx\\
+\frac{cos^{m+1}x\cdot\sen^{n-1}x}{m+n}+\frac{n-1}{m+n}\int\cos^{m}x\cdot\sen^{n-2}x\cdot dx\\
+\end{cases}
+\end{equation}
+
+\subsubsection{funciones trigonom\'etricas inversas}
+\begin{equation}
+\int \arcsen\frac{x}{a}dx=x\cdot\arcsen\frac{x}{a}+\sqrt{a^2-x^2}+C, \quad a>0;
+\end{equation}
+\begin{equation}
+\int \arccos\frac{x}{a}dx=x\cdot\arccos\frac{x}{a}-\sqrt{a^2-x^2}+C, \quad a>0;
+\end{equation}
+\begin{equation}
+\int \arctan\frac{x}{a}dx=x\cdot\arctan\frac{x}{a}-\inv{a}a\ln\left(1+\frac{x^2}{a^2}\right)+C,
+\quad a>0;
+\end{equation}
+\begin{equation}
+\int \arccot\frac{x}{a}dx=\inv{a}x\cdot\arccot\frac{x}{a}+\frac{a}{2}\ln(a^2+x^2)+C
+\end{equation}
+\begin{equation}
+\int x\cdot \arccos x dx=x\cdot \arccos x+\arcsen x+C
+\end{equation}
+
+\subsection{Funciones exponenciales y/o logar\'itmicas}
+\begin{equation}
+\int x^n e^{ax} dx=\frac{x^n e^{ax}}{a}-\frac{n}{a}\int x^{n-1}e^{ax}dx
+\end{equation}
+\begin{equation}
+\int e^{ax}\sen bx\cdot dx=\frac{e^{ax}(a\sen bx-b\cos{bx})}{a^2+b^2}+C
+\end{equation}
+\begin{equation}
+\int e^{ax}\cos bx\cdot dx=\frac{e^{ax}(b\sen bx+a\cos{bx})}{a^2+b^2}+C
+\end{equation}
+\begin{equation}
+\int \frac{dx}{a+be^{nx}}=\frac{x}{a}-\frac{\ln(a+be^{nx})}{an}+C
+\end{equation}
+\begin{equation}
+\int \log_a xdx=x\log_a x-\frac{x}{\ln a}+C, \quad \forall a>0;
+\end{equation}
+\begin{equation}
+\int x\ln x dx=\frac{2x^2\ln x-x^2}{4}+C
+\end{equation}
+\begin{equation}
+\int x^n\ln ax\cdot dx=x^{n+1}\left[\frac{\ln ax}{n+1}-\inv{(n+1)^2}\right]+C
+\end{equation}
+%
+\begin{equation}
+ \int x^n(\ln ax)^m dx=\frac{x^{n+1}}{n+1}(\ln ax)^m-\frac{m}{n+1}\int x^n(\ln ax)^{m-1}dx,
+ \quad n, m \ne -1, x>0;
+\end{equation}
+%
+\begin{equation}
+\int \ln ax dx=x\ln ax-x+C, \quad x>0;
+\end{equation}
+\begin{equation}
+\int \frac{e^{ax}}{x}dx=\ln|x|+\sum_{i=1}^{\infty}\frac{(ax)^i}{i\cdot i!}+C
+\end{equation}
+\begin{equation}
+\int e^{ax}\ln x\cdot dx=\inv{a}e^{ax}\ln|x|-\inv{a}\int\frac{e^{ax}}{x}dx+C
+\end{equation}
+\begin{equation}
+\int \frac{dx}{\ln x}=\ln |\ln x|+\sum_{i=1}^{\infty}\frac{\ln^i x}{i\cdot i!}+C, \quad x>0;
+\end{equation}
+\begin{equation}
+\int \frac{dx}{x\ln x}=\ln|\ln x|+C, \quad x>0;
+\end{equation}
+\begin{equation}
+\int \frac{\ln^n x}{x}dx=\frac{1}{x+1}\ln^{n+1}x, \quad n\ne -1, x>0;
+\end{equation}
+
+\subsection{Funciones hiperb\'olicas}
+\begin{equation}
+\int \senh ax dx=\inv{a}\cosh ax+C
+\end{equation}
+%
+\begin{equation}
+\int \senh^2 x dx=\inv{4}\senh{2x}-\inv{2}x+C
+\end{equation}
+%
+\begin{equation}
+\int \cosh ax dx=\inv{a}\senh{ax}+C
+\end{equation}
+%
+\begin{equation}
+\int \cosh^2 x dx=\inv{4}\senh{2x}+\inv{2}x+C
+\end{equation}
+\begin{equation}
+\int \tanh ax dx=\inv{a}\ln|\cosh ax|+C
+\end{equation}
+\begin{equation}
+\int \coth ax dx=\inv{a}\ln|\senh ax|+C
+\end{equation}
+\begin{equation}
+\int \sech x dx=\arctan(\senh x)+C
+\end{equation}
+\begin{equation}
+\int \sech^2 x dx=\tanh x+C
+\end{equation}
+\begin{equation}
+\int \csch x dx=\ln \left| \tanh \frac{x}{2} \right|=-\inv{2}\ln\frac{\cosh x+1}{\cosh x-1}+C
+\end{equation}
+\begin{equation}
+\int \senh x\cdot \tanh x\cdot dx=-\sech x+C
+\end{equation}
+\begin{equation}
+\int \csch x\cdot\coth x\cdot dx=-\csch x+C
+\end{equation}
+
+\subsubsection{funciones hiperbólicas inversas}
+\begin{equation}
+\int \arcsenh\frac{x}{a}dx=x\ \arcsenh\frac{x}{a}-\sqrt{a^2+x^2}+C,\quad a>0
+\end{equation}
+\begin{equation}
+\int \arccosh\frac{x}{a}dx=
+\begin{cases}
+  x\ \arccosh\frac{x}{a}-\sqrt{x^2-a^2}+C,&  \arccosh\frac{x}{a}>0, a>0;\\
+  x\ \arccosh\frac{x}{a}+\sqrt{x^2-a^2}+C,&  \arccosh\frac{x}{a}<0, a>0;
+\end{cases}
+\end{equation}
+%
+\begin{equation}
+ \int \arctanh\frac{x}{a} dx=x\ \arctanh\frac{x}{a}+\inv{2}a\ln(a^2-x^2)+C
+\end{equation}
+%
+\begin{equation}
+ \int \arccoth \frac{x}{a}dx=x\ \arccoth\frac{x}{a}+\inv{2}a\ln(x^2-a^2)+C
+\end{equation}
+%
+\begin{equation}
+ \int \arcsenh\frac{x}{a}dx=x\ \arcsech\frac{x}{a}-a\ \arcsen\sqrt{1-\frac{x^2}{a^2}}+C
+\end{equation}
+%
+\begin{equation}
+ \int \arcsech\frac{x}{a}dx=x\ \arccsch\frac{x}{a}+a\ \arccosh\sqrt{1+\frac{x^2}{a^2}}+C
+\end{equation}
+
+\section{Integrales definidas}
+\begin{equation}
+\int_0^\infty x^n e^{-qx}dx=\frac{n!}{q^{n+1}}, \quad n>-1, q>0;
+\end{equation}
+%
+\begin{eqnarray}
+ \int_0^\infty x^me^{-ax^2}dx &=& {\Gamma[(m+1)/2] \over 2a^{(m+1)/2}}, \qquad a>0\\
+  &=&\frac{n!}{2a^{n+1}}, \quad \textnormal{Si } m \textnormal{ impar}: m=2n+1 \nonumber \\
+  &=&\frac{1\cdot3\cdot\ldots\cdot(2n-1)}{2^{n+1}}\sqrt{\frac\pi{a^{2n+1}}}, \quad
+     \textnormal{Si } m \textnormal{ par}: m=2n \nonumber
+\end{eqnarray}
+%
+\begin{equation}
+ \int_0^\epsilon x^2e^{-ax^2}dx= -\frac\epsilon{2a}e^{-a\epsilon^2}+
+   \frac14\sqrt{\frac\pi{a^3}}\erf(\epsilon\sqrt{a})
+\end{equation}
+%
+\begin{equation}
+ \int_t^\infty x^n e^{-ax}dx=\frac{n!e^{-at}}{a^{n+1}}\left(1+at+\frac{a^2 t^2}{2!}+\ldots
+ +\frac{a^n t^n}{n!}\right), \quad n=0,1,\ldots, a>0; %\nonumber
+\end{equation}
+%
+%\begin{equation}
+%\int_0^\infty x^{2n}e^{-ax^2}dx=\frac{1\cdot 3\cdot\ldots\cdot(2n-1)}{2^{n+1}}
+%\left(\frac{\pi}{a^{2n+1}}\right)^{1/2},\, a>0,n=1,2,3\ldots
+%\end{equation}
+%
+\begin{equation}
+\int_0^\infty x^{n}e^{-ax^2}dx=\frac{n-1}{2a}\int_0^\infty x^{n-2}e^{-ax^2}dx
+\end{equation}
+%
+\begin{equation}
+\int_0^\infty e^{-ax^2}dx=\inv{2}\sqrt{\frac{\pi}{a}}
+\end{equation}
+%
+\begin{equation}
+\int_0^\infty xe^{-ax^2}dx=\inv{2a}
+\end{equation}
+%
+\begin{equation}
+\int_0^x \frac{dx}{1-x}=\ln\inv{1-x}
+\end{equation}
+%
+\begin{equation}
+\int_0^x\frac{dx}{(1-x)^2}=\frac{x}{1-x}
+\end{equation}
+%
+\begin{equation}
+\int_0^x\frac{dx}{1+\epsilon x}=\inv{\epsilon}\ln(1+\epsilon x)
+\end{equation}
+%
+\begin{equation}
+\int_0^x\frac{1+\epsilon x}{1-x}dx=(1+\epsilon)\ln\inv{1-x}-\epsilon x
+\end{equation}
+%
+\begin{equation}
+\int_0^x\frac{1+\epsilon x}{(1-x)^2}dx=\frac{(1-\epsilon)x}{1-x}-\epsilon\ln\inv{1-x}
+\end{equation}
+%
+\begin{equation}
+\int_0^x\frac{(1+\epsilon x)^2}{(1-x)^2}dx=2\epsilon(1+\epsilon)\ln(1-x)+\epsilon^2
+x+\frac{(1+\epsilon)^2 x}{1-x}
+\end{equation}
+%
+\begin{equation}
+\int_0^x \frac{dx}{(1-x)(\Theta_B-x)}=\inv{\Theta_B-1}\ln\frac{\Theta_B-x}{\Theta_B(1-x)},
+\quad \Theta_B \ne 1
+\end{equation}
+%
+\begin{equation}
+\int_0^x \frac{dx}{ax^2+bx+c}=\frac{-2}{2ax+b}+\frac{2}{b}, \quad b^2=4ac
+\end{equation}
+%
+\begin{equation}
+\int_0^x \frac{dx}{ax^2+bx+c}=\inv{a(p-q)}\ln\left( \frac{q}{p}\cdot\frac{x-p}{x-q}
+\right), \quad b^2>4ac;\; p,q\, \text{ son las raíces};
+\end{equation}
+%
+\begin{equation}
+\int_0^x \frac{a+bx}{c+gx}dx=\frac{bx}{g}+\frac{ag-bc}{g^2}\ln(c+gx)
+\end{equation}
+
+\section{M\'etodos de integraci\'on}
+%
+\subsection{Integraci\'on por partes:} \[\int u\cdot dv=u\cdot v-\int v \cdot du\]
+%
+\subsection{Integraci\'on por sustituci\'on:} si $x=g(t)$ es un funci\'on que admite
+derivada cont\'inua no nula y funci\'on inversa $t=h(x)$ y $F(t)$ es una primitiva de
+$f(g(t))g'(t)$ se tiene que: \[ \int f(x)dx=F(h(x))+C \]
+%
+\subsection{Integraci\'on de funciones racionales:}
+  Queremos hallar $\int\frac{F(x)}{Q(x)}dx$ siendo $F(x)$ y $Q(x)$ polinomios de coeficientes
+reales. Si el grado de $F$ es mayor que el de $Q$ se hace la divisi\'on para obtener $
+\int\frac{F(x)}{Q(x)}dx=\int C(x)dx+\int\frac{R(x)}{Q(x)}dx$. La primera integral es inmediata.
+Para la segunda se admite que $Q(x)$ se puede descomponer de la siguiente manera:
+$Q(x)=a_0(x-a)^p\ldots(x-a)^q[(x-c)^2+d^2]^r \ldots [(x-e)^2+f^2]^s$ y es \'unica. En tal caso,
+el integrando del segundo t\'ermino se puede descomponer como sigue:
+$\frac{R(x)}{Q(x)}=\frac{A_1}{(x-a)^p}+
+\frac{A_2}{(x-a)^{p-1}}+\ldots+\frac{A_p}{x-a}+\ldots +\frac{B_1}{(x-b)^q}+
+\frac{B_2}{(x-b)^{q-1}}+\ldots+ \frac{B_q}{x-b}+ \frac{M_1 x+N_1}{\left( (x-c)^2+d^2
+\right)^{r-1}}+ \ldots+\frac{M_r x+N_r}{ (x-c)^2+d^2}+\ldots+ \frac{H_1 x+K_1}{((x-e)^2+f^2)^s}
++\ldots+\frac{H_s x+K_s}{(x-e)^2+f^2}$. Todas las constantes se obtienen identificando
+coeficientes. Al resolver los sumando se obtienen integrales del siguiente tipo:
+\begin{enumerate}
+ \item $\int\frac{dx}{x-a}=\ln|x-a|+C$
+ \item $\int\frac{dx}{(x-a)^p}=\inv{(1-p)(x-a)^{p-1}}+C$
+ \item $\int\frac{Mx+N}{(x-c)^2+d^2}dx=\frac{M}{2}\ln|(x-c)^2+d^2|+\frac{Mc+N}{d}
+  \arctan\frac{x-c}{d}+C$
+ \item $\frac{Mx+N}{\left[(x-c)^2+d^2\right]^r}dx\quad\Rightarrow$ Llamemos
+  $I_r=\int\frac{Mx+N}{\left[(x-c)^2+d^2\right]^r}dx$ y
+  $J_r=\int\frac{dx}{\left[(x-c)^2+d^2\right]^r}dx\quad$ operando se obtiene
+  \begin{itemize}
+    \item $I_r=\frac{M}{2(1-r)}\cdot \inv{\left((x-c)^2+d^2\right)^{r-1}}+(Mc+N)\cdot J_r$
+    \item $J_r=\inv{d^2}J_{r-1} +\frac{x-c}{d^2 2(1-r)\left((x-c)^2+d^2\right)^{r-1}}-
+      \inv{d^2 2(1-r)} J_r-1$
+  \end{itemize}
+\end{enumerate}
+
+\subsection{M\'etodo de Hermite}
+  Si $Q(x)=(x-a)^m\ldots (x-b)^n\cdot
+\left[(x-c)^2+d^2\right]\ldots\left[(x-e)^2+f^2\right]$ entonces
+\[ \begin{split}
+ \int\frac{R(x)}{Q(x)}dx=\frac{U(x)}{(x-a)^{m-1}\ldots (x-b)^{n-1}\ldots
+ \left[(x-c)^2+d^2\right]^{p-1}\ldots\left[(x-e)^2+f^2\right]^{q-1}} +\\
+ K\int\frac{dx}{x-a}+\ldots+ L\int \frac{dx}{x-b}+\int\frac{Cx+D}{(x-c)^2+d^2}dx+\ldots +
+ \int\frac{Ex+F}{(x-e)^2+ f^2} dx
+\end{split}\] donde $U(x)$ es un polinomio de un grado menos que su
+denominador. Todas las constantes se determinan derivando la expresi\'on e identificando
+coeficientes.
+%
+\subsection{Integraci\'on de funciones irracionales algebraicas}
+\begin{itemize}
+ \item Integrales del tipo \[\int R\left( x, \left(\frac{ax+b}{cx+d}\right)^\frac{m_1}{n_1},
+   \ldots , \left(\frac{ax+b}{cx+d}\right)^\frac{m_s}{n_s} \right) dx \mid a,b,c,d \in
+\mathbb{R}; n_i, m_i \in \mathbb{Z}; n_i \ne 0\] y $c$ y $d$ no se anulan simult\'aneamente. Se
+transforma en integral racional mediante el cambio $\frac{ax+b}{cx+d}=t^m$ siendo $m$ el
+m\'inimo com\'un m\'ultiplo de las $n_i$.
+ \item Integrales del tipo $\int R\left( x, \sqrt{ax^2+bx+c} \right)dx$ se consideran los
+siguientes casos:
+    \begin{enumerate}
+      \item $a>0\to \sqrt{ax^2+bx+c}=\pm\sqrt{a}\cdot x+t$
+      \item $c<0\to \sqrt{ax^2+bx+c}=\pm\sqrt{c}+x\cdot t$
+      \item $a,c<0\to \sqrt{ax^2+bx+c}=t\cdot (x-\alpha)$ siendo $\alpha$ una de las raices del
+polinomio.
+    \end{enumerate}
+ \item M\'etodo Alem\'an: \label{aleman}
+  $\int \frac{P(x)}{\sqrt{ax^2+bx+c}}dx=Q(x) \cdot \sqrt{ax^2+bx+c}
++K\int\frac{dx}{\sqrt{ax^2+bx+c}}$ Donde $grad Q(x) =grad (P(x))-1$ y $K$ es una constante. Los
+coeficientes se obtienen derivando la expresi\'on e identificando t\'erminos.
+ \item Series bin\'omicas: $\int x^m(a+bx^n)^p dx \mid a,b \in \mathbb{R}; m,n,p\in
+\mathbb{Q}$. Estas integrales se convierten en racionales en los siguientes casos con los
+cambios indicados. 
+   \begin{enumerate}
+      \item $p\in\mathbb{Z}\to x=t^q$ donde $q$ es el m.c.m. de los denominadores $n$ y $m$.
+      \item $\frac{m+1}{n}\in \mathbb{Z}\to a+bx^n=t^q$ siendo $q$ el denominador de $p$.
+      \item $\frac{m+1}{n}+p\in\mathbb{Z}\to \frac{a+bx^n}{x^n}=t^q$ siendo $q$ el denominador
+de $p$.
+   \end{enumerate}
+   En cualquier otro caso se puede expresar como funci\'on elemental.
+\end{itemize}
+
+\subsection{Integraci\'on de funciones trascendentes}
+Si $R(u)$ es una funci\'on racional y $u=f(x)$ es una funci\'on que admite funci\'on inversa
+con derivada racional, entonces la integral de $R(f(x))$ se reduce a una integral racional
+mediante el cambio $f(x)=t''$.
+
+\subsection{Integraci\'on de funciones trigonom\'etricas}
+\begin{itemize}
+  \item Integraci\'on de $\int R(\sen x,\cos x)dx$: en general se hace el cambio
+$\tan\frac{x}{2}=t$ con lo que $\sen x=\frac{2dt}{1+t^2},\,\cos x=\frac{1-t^2}{1+t^2},\,
+dx=\frac{2t}{1+t^2}$. En elgunos casos se pueden intentar otros cambios:
+\begin{enumerate}
+ \item Si $R(\sen x,\cos x)=-R(\sen x,-\cos x)$ se hace el cambio $\sen x=t$
+ \item Si $R(\sen x,\cos x)=-R(-\sen x,\cos x)$ se hace el cambio $\cos x=t$
+ \item Si $R(\sen x,\cos x)=R(-\sen x,-\cos x)$ se hace el cambio $\tan x=t$
+\end{enumerate}
+ \item Integrales del tipo $I_{m,n}=\int \sen^m x^n\cdot x\cdot dx$ se puede reducir de las
+siguientes formas:
+\begin{enumerate}
+ \item $I_{m,n}=\frac{\sen^{m+1}x\cdot\cos^{n-1}x}{m+1}+
+   \frac{n-1}{m+1}I_{m+2,n-2}, \quad m\ne-1$
+ \item $I_{m,n}=\frac{\sen^{m+1}x\cdot\cos^{n-1}x}{m+n}+
+   \frac{n-1}{m+n}I_{m,n-2}, \quad m+n\ne 0$
+ \item $I_{m,n}=-\frac{\sen^{m-1}x\cdot\cos^{n+1}x}{m+1}+
+   \frac{m-1}{n+1}I_{m+2,n+2}, \quad m\ne-1$
+ \item $I_{m,n}=-\frac{\sen^{m-1}x\cdot\cos^{n+1}x}{m+n}+
+   \frac{m-1}{m+n}I_{m-2,n}, \quad m+n\ne 0$
+ \item $I_{m,n}=-\frac{\sen^{m+1}x\cdot\cos^{n+1}x}{n+1}+
+   \frac{m+n-2}{n+1}I_{m,n+2}, \quad n\ne-1$
+ \item $I_{m,n}=\frac{\sen^{m+1}x\cdot\cos^{n+1}x}{m+1}+
+   \frac{m+n-2}{m+1}I_{m+2,n+2}, \quad m\ne-1$
+\end{enumerate}
+\end{itemize}
+
+\section{Ecuaciones diferenciales ordinarias}
+\subsection{Ecuaciones diferenciales lineales}
+$$y'+p(x)y=q(x) \Longrightarrow y=e^{-\int(x)dx}\left(\int q(x)
+	e^{\int p(x)dx}+C \right)$$
+$$\tau y'+y=p(t) \Longrightarrow y=e^{-t/\tau}\left({1\over\tau}\right)
+	\int^t_0 p(t)e^{t/\tau}dt+y_0$$
+
+\section{Solución numérica de ecuaciones diferenciales}
+\subsection{Método de Runge-Kutta de cuarto orden}
+$$y'=f(x,y) \to y_{i+1}=y_i+{1\over6}(k_1+2k_2+2k_3+k4)h$$
+$$\begin{array}{ll}
+	k_1=f(x_i,y_i) & k_2=f(x_i+h/2,y_i+k_1h/2) \\
+	k_3=f(x_i+h/2,y_i+k_2h/2) & k_4=f(x_i+h,y_i+k_3h)
+\end{array}$$
+
+\end{document}

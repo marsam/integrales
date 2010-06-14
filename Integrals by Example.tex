@@ -1,0 +1,527 @@
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% V.0.2
+% -Mario Rodas 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[12pt,a4paper]{scrartcl}
+\usepackage{amsmath}
+\usepackage{amssymb,amsfonts,amsthm}
+\linespread{1.2}
+\usepackage[latin1]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage[pdftex]{graphicx} %graficos
+\usepackage{url} %url
+\usepackage[pdftex,breaklinks=true]{hyperref} %links
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Teoremas, corolarios y lemas. Remarks y definiciones
+\newtheorem{thm}{Teorema}[section]
+\newtheorem{cor}[thm]{Corolario}
+\newtheorem{lem}[thm]{Lema}
+
+
+\theoremstyle{remark}
+\newtheorem{rem}[thm]{Remark}
+
+\theoremstyle{definition}
+\newtheorem{defin}[thm]{Definición}
+
+\theoremstyle{remark}
+\newtheorem{ejm}[thm]{Ejemplo}
+
+
+%Nuevo parrafo con interlineado. Cabeceras y titulos con estilo article
+\newcommand\mypar{\par\vspace{\baselineskip}}
+\renewcommand{\sectfont}{\rmfamily \bfseries} %cabeceras y titulos con estilo roman, negrita.
+
+%Nuevos comandos
+%\newcommand{\inv}[1]{\frac{1}{#1}}
+%Vamos, no deseo ensuciarme la manos...mas comandos
+
+\newcommand{\arctanh}{\textnormal{arctanh}}
+\newcommand{\arcsenh}{\textnormal{arcsenh}}
+\newcommand{\arccosh}{\textnormal{arccosh}}
+\newcommand{\arccoth}{\textnormal{arccoth}}
+\newcommand{\arcsech}{\textnormal{arcsech}}
+\newcommand{\arccsch}{\textnormal{arccsch}}
+\newcommand{\sech}   {\textnormal{sech}}
+\newcommand{\csch}   {\textnormal{csch}}
+\newcommand{\ctanh}  {\textnormal{ctanh}}
+\newcommand{\arccot} {\textnormal{arccot}}
+\newcommand{\arcsec} {\textnormal{arcsec}}
+\newcommand{\arccsc} {\textnormal{arccsc}}
+\newcommand{\erf}    {\textnormal{erf}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Title
+\title{\normalfont{Integrals by Example}} %Titulo del documento con estilo article
+\author{\copyright Mario Rodas Palomino}
+\date{2 de setiembre del 2008}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+%\newpage
+%\section*{Aclaraci\'on}
+%Este documento esta en \textsl{beta} cualquier error, \textbf{guardarlo en secreto}.
+\begin{center}
+ \begin{minipage}{0.4\textwidth}
+		\includegraphics{by-nc-sa}
+ \end{minipage}%
+ \begin{minipage}{0.4\textwidth}
+  \begin{flushright}
+    \small
+       	Echo con \LaTeXe + Vim como Dios manda.
+  \end{flushright}
+ \end{minipage}
+\end{center}
+\section{Introducci\'on}
+Hist\'oricamente, el concepto de integral de una funci\'on surgi\'o en relaci\'on con dos problemas aparentemente distintos, pero en realidad \'intimamente relacionados\footnote{Ve\'ase: Teorema fundamental del C\'alculo}. Por un lado, la \emph{integral definida} de una funci\'on $f:\mathbb{R} \rightarrow \mathbb{R}$ en un intervalo $\left[a,b\right]$ (en el cual $f$ est\'a definida y no es negativa) se define como el \'area comprendida entre la gr\'afica de la funci\'on y el eje de las abscisas en el intervalo $\left[a,b\right]$. Por otro lado la \emph{integral indefinida} \'o \emph{primitiva} de $f$ es cualquier funci\'on derivable cuya derivada es $f$. Algo que debo de aclarar es que si $f$ es una funci\'on integrable en $\left[a,b\right]$ , $f$ no tiene por qu\'e tener una primitiva.
+El objeto de estos apuntes no es definir anal\'iticamente la \emph{integral definida} sino el elaborar m\'etodos para hallar la integral indefinida en general trabajaremos con la integral indefinida
+$$\int f\left(x\right) dx$$
+Cuya soluci\'on tiene la forma $g\left(x\right) + C$ , donde $g$ es una funci\'on que satisface\footnote{Utilizaremos esta condici\'on para verificar que $g$ es una soluci\'on de la integral} :
+$$g'\left(x\right) = f\left(x\right)$$
+El proceso de hallar la soluci\'on de una integral es lo que se denomina \emph{integrar una funci\'on}, o simplemente \emph{integraci\'on}. En la expresi\'on $\int f\left(x\right) dx = g\left(x\right) + C$, la funci\'on $f\left(x\right)$ se llama \emph{integrando} y la funci\'on $g\left(x\right)$ se llama \emph{primitiva} o \emph{antiderivada} de $f\left(x\right)$ y $C$ es la \emph{constante de integraci\'on} la cual olvidaremos escribir en general (muchas veces por motivos de espacio). Sin embargo, se debe tener siempre presente que son infinitas las soluciones de una integral indefinida y cualquier par de difieren en una constante.
+¿Es importante conocer la primitiva de una funci\'on? S\'i, su importancia se deriva de la regla de Barrow%El Teorema fundamental del C\'alculo relaciona ambos conceptos, estableciendo(bajo ciertas condiciones t\'ecnicas) que la funci\'on cuyo valor en $x$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Un poco de teor\'ia}
+\begin{defin}[Definici\'on de primitiva]Llamaremos primitiva (o integral indefinida) de una funci\'on $f: \mathbb{R} \rightarrow \mathbb{R}$ definida en un intervalo $J$ a cualquier funci\'on $g: \mathbb{R} \rightarrow \mathbb{R}$ tal que $g'=f$ en $J$
+\end{defin}
+Donde estamos utilizando la convenio de escribir $g'\left(x\right)$ por $g'\left(x + 0\right)$ \'o $g'\left(x-0\right)$) si $x$ es uno de los extremos de $J$.
+\begin{thm}
+Si $g_1$ y $g_2$ son primitivas de la funci\'on $f$ en un intervalo $J$ . Entonces $g_1 -g_2 = constante$
+\end{thm}
+En efecto si $g_2$ es otra primitiva de $f$ entonces $\left(g_1 - g_2\right)' = f -f = 0$ en $J$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\subsection{Propiedades}
+Estas son algunas propiedades de las primitivas (donde $F$ es la primitiva de $f$) :
+\begin{align}
+	&\int \lambda f\left(x\right) \pm \mu g\left(x\right) dx = \lambda \int f\left(x\right)dx \pm \mu \int g\left(x\right) dx && \text{(linealidad)} \nonumber \\
+	&\int f\left(x\right) g\left(x\right) dx = F\left(x\right)g\left(x\right) - \int F\left(x\right) g'\left(x\right) dx && \text{(integraci\'on por partes)} \nonumber	\\
+	&\int f\left(g\left(x\right)\right) g'\left(x\right) dx = \int F\left(g\left(x\right)\right) && \text{(sustituci\'on)} \nonumber \\
+	&\int f\left(ax + b\right) dx = \frac{1}{a} F\left(ax + b\right) \nonumber 
+\end{align}
+
+Acerca de la linealidad de la integrales\footnote{La cual se puede deducir facilmente de la igualdad de derivadas: $\left(\lambda f\left(x\right) + \mu g\left(x\right)\right)' =\lambda f'\left(x\right) + \mu g'\left(x\right)$}, si $f$ y $g$ admiten una primitiva en un intervalo $J$, entonces otro tanto ocurre con $\lambda f\left(x\right) +\mu g\left(x\right)$ para todo $\lambda , \mu \in \mathbb{R}$ . N\'otese que la existencia de la primitiva de (por ejemplo) de $f + g$ no implica la existencia de la primitiva de $f$ y $g$ por separado.
+
+\subsection{Integrales b\'asicas}\label{tabla}
+\begin{eqnarray}
+	&& \int x^n dx = \frac{x^{n+1}}{n+1} + C \qquad, \forall n\in \mathbb{R} / n\neq -1 \\
+	&& \int \frac{1}{x}dx = \ln|x| + C\\
+	&& \int e^{x}dx=e^{x} + C \\
+	&& \int \sen x dx=-\cos x + C \\
+	&& \int \cos x dx=\sen x + C \\
+	&& \int \sec^2 x dx=\tan x + C \\
+	&& \int \csc^2 x dx=-\cot x + C \\
+	&& \int \left(\sec x \right)\left(\tan x \right) dx=\sec x + C \\
+	&& \int \left(\csc x \right)\left(\cot x \right) dx=-\csc x+ C \\
+	&& \int \frac{1}{\sqrt{1-x^2}} dx=\arcsen x + C=-\arccos x + C \qquad , |x|<1 \\
+	&& \int \frac{1}{1+x^2}dx =\arctan x + C=-\arccot x + C \\
+	&& \int \frac{1}{x\sqrt{x^2 +1}}dx =\arcsec |x| + C=-\arccsc |x| + C \qquad , |x|>1 \\
+	&& \int \senh x dx =\cosh x + C \\
+	&& \int \cosh x dx =\senh x + C \\
+	&& \int \sech^2 x dx =\tanh x + C \\
+	&& \int \csch^2 x dx =-\coth x + C \\
+	&& \int \frac{1}{\sqrt{1 + x^2}} dx =\arcsenh x + C = \ln\left(x + \sqrt{1 + x^2}\right) + C \\
+	&& \int \frac{1}{\pm\sqrt{x^2 - 1}} dx =\arccosh x + C = \ln\left(x \pm \sqrt{x^2 - 1}\right) + C \qquad, |x|>1
+\end{eqnarray}	
+\begin{equation}
+\int \frac{1}{1-x^2} dx = {\left\{ \begin{array}{ll}
+						\arctanh x = \frac{1}{2}\ln{\frac{1+x}{1-x}}\quad , |x|<1\\
+						\arccoth x = \frac{1}{2}\ln{\frac{1+x}{x-1}}\quad , |x|>1
+					\end{array} \right.}
+\end{equation}
+%\end{eqnarray}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%         Métodos de Integración
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{M\'etodos de integraci\'on}
+
+\subsection{Sustituci\'on o cambio de variable}
+\'Este m\'etodo es la forma integral de la regla de la cadena\footnote{Si $g : \mathbb{R}\rightarrow\mathbb{R}$ es derivable en $a$ y $f :\mathbb{R}\rightarrow\mathbb{R}$ es derivable en $g\left(x\right)$, entonces $f\circ g$ es derivable en $a$ y se verifica $$\left(f \circ g\right)'\left(a\right)=f'\left(g\left(a\right)\right)g'\left(a\right)$$}:
+
+\begin{thm}\label{thm:ivar} 
+Sea $g :\mathbb{R}\rightarrow\mathbb{R}$ una funci\'on con derivada continua en $\left[a,b\right]$, y sea $f : \mathbb{R}\rightarrow\mathbb{R}$ continua en $g\left(\left[a,b\right]\right)$.Si $F$ es una primitiva de $f$ entonces se cumple:
+\begin{equation}
+\int f\left(g\left(x\right)\right)g'\left(x\right)dx = F\left(g\left(x\right)\right)
+\end{equation}
+\end{thm}
+
+Este m\'etodo de hallar primitivas efectuando un cambio de variable adecuado es muy poderoso y flexible, pero tiene el incoveniente de depender esencialmente de la habilidad en escoger el cambio de varible indicado en cada caso, lo cual escapa a la sistematizaci\'on.
+%
+\begin{ejm}\label{sec:Ejm1}
+Calcular $\int \cos 2x dx$. Este es un ejemplo sencillo, pero voy a resolverlo para mostrar la simplicidad de este m\'etodo:
+$$\int \cos 2x dx = \left\{ \begin{array}{ll} y=2x\\ dy = 2 dx \end{array} \right\} = \int \cos y \: \frac{dy}{2}=\frac{1}{2}\sen y = \frac{1}{2} \sen 2x $$
+\end{ejm}
+%
+\begin{ejm}\label{sec:Ejm2}
+Calcular $\int \sqrt{1 - x^2}dx$ . Notamos que la integral no aparece en nuestra tabla de integrales b\'asicas (\ref{tabla}). Es necesario \emph{convertirla} en una de la tabla, vamos a realizar el cambio de varible $x = \sen y$.
+	$$\int \sqrt{1 - x^2}dx = \left\{ \begin{array}{ll} x = \sen y \\ dx = \cos y dy \end{array} \right\} = \int \sqrt{1-\sen^2 y} \cos y \: dy = \int \cos^2 y \: dy$$
+Esta \'ultima integral se calcula facilmente usando la identidad trigonom\'etrica $\cos^2 \lambda = \frac{\left(1+\cos 2\lambda \right)}{2}$.
+$$\int \cos^2 y \: dy = \frac{1}{2}\int \left(1+\cos 2y\right) \: dy = \frac{1}{2}\left(y + \frac{1}{2}\sen 2y\right)=\frac{1}{2}\left(y + \sen \cos y\right)$$
+por lo tanto:
+\begin{eqnarray}
+\left[\int \sqrt{1 - x^2} dx\right]_{x=\sen y} &=& \frac{1}{2}\left(y + \sen y \cos y\right) \nonumber \\
+ \Longleftrightarrow \int \sqrt{1 - x^2}dx &=& \frac{1}{2}\left(\arcsen x + x\sqrt{1-x^2}\right) \nonumber 
+\end{eqnarray}
+Ya que $x = \sen y$ si y solo si $y = \arcsen x$.
+\end{ejm}
+%
+\begin{ejm}\label{sec:Ejm3}
+Calcular $\int \sec x \: dx$ . Esta integral es un poco mas complicada que el anterior, y como no aparece en nuestra tabla (\ref{tabla}) vamos a \emph{convertirla} en una de la tabla:
+$$\int \sec x \: dx = \int \sec x \underbrace{\left( \frac{\sec x + \tan x}{\sec x + \tan x}\right)}_1 dx = \int\frac{\sec x\tan x +\tan^2 x}{\sec x + \tan x} dx $$
+Hacemos el cambio de variable $y = \sec x + \tan x$, luego:
+$$\int\frac{\sec x\tan x +\tan^2 x}{\sec x + \tan x} dx = \left\{ \begin{array}{ll} y = \sec x + \tan x \\ dy = \left(\sec x\tan x +\tan^2 x\right)dx \end{array} \right\} = \int \frac{1}{y} \: dy = \ln |y|$$
+$$\int \sec x \: dx = \ln{| \sec x + \tan x |}$$
+\end{ejm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Integraci\'on por partes}
+
+\begin{thm}[F\'ormula de Integraci\'on por partes]\label{thm:ipartes} Si $f'\left(x\right)$ y $g'\left(x\right)$ son continuas en un intervalo$\left[a,b\right]$ entonces:
+\begin{equation}
+\int f\left(x\right)g'\left(x\right) dx = f\left(x\right) g\left(x\right) - \int f'\left(x\right) g\left(x\right) dx
+\end{equation}
+
+\end{thm}
+
+La f\'ormula anterior es la versi\'on en terminos de primitivas de la regla de Leibniz.
+%
+\begin{ejm}
+Calcular $\int \arctan x dx$. Para resolver esta integral utilizaremos la integraci\'on por partes:
+$$\int \arctan x \: dx = \int \left(x\right)'\arctan x \:dx = x \arctan x -\int \frac{x}{1 + x^2} dx = x \arctan x - \frac{1}{2}\ln{\left(1+x^2\right)}$$
+\end{ejm}
+%
+\begin{ejm}
+Calcular $\int x^n \ln x dx$. Para resolver esta integral utilizaremos la integraci\'on por partes:
+$$\int x^n \ln x dx = \int \left(\frac{x^{n+1}}{n+1}\right)'\ln x dx =  \frac{x^{n+1}}{n+1}\ln x - \int \frac{x^{n+1}}{n+1} dx = \frac{x^n}{n+1}\left(\ln x -\frac{1}{n+1}\right)$$
+\end{ejm}
+%
+\begin{ejm}
+Calcular $I = \int e^{ax} \cos bx \: dx$. Aparentemente mas dif\'icil que el problema anterior:
+$$I= \int e^{ax} \cos bx dx = \int e^{ax} \left(\frac{\sen bx}{b}\right)' dx = \frac{e^{ax} \sen bx}{b} - \frac{a}{b} \int e^{ax} \sen bx \: dx$$
+La integral $\int e^{ax} \sen{bx} \: dx$ es de la misma forma que la original asi que volvemos a aplicar la integraci\'on por partes:
+$$ \int e^{ax} \sen bx \: dx = \int e^{ax} \left(-\frac{\cos bx}{b}\right)' dx = - \frac{e^{ax} \cos bx}{b} + \frac{a}{b} \int e^{ax} \cos bx \: dx$$
+Juntando las dos f\'ormulas anteriores
+$$I = \frac{e^{ax} \sen bx}{b} + \frac{a}{b^2}e^{ax} \cos{bx} -\frac{a^2}{b^2}I $$
+de donde, resolviendo la ecuaci\'on respecto a $I$ obtenemos:
+$$I = \int e^{ax} \cos{bx} \: dx = \frac{b \sen{bx} + a \cos{bx}}{a^2 + b^2}e^{ax}.$$
+\end{ejm}
+
+Una peque\~na  observaci\'on acerca de la integraci\'on por partes, la primitiva de un polinomio es otro polinomio, que se calcula f\'acilmente utilizando la f\'ormula para la primitiva $x^n$ con $n \in \mathbb{N} \cup 0 $. Si $P$ es un polinomio y $f$ es una funci\'on (por ejemplo) infinitamente diferenciable con una primitiva $g$ conocida, la regles de Leibniz proporciona
+$$\int P\left(x\right) f\left(x\right) dx = \int P\left(x\right) g'\left(x\right) dx = P\left(x\right)g\left(x\right) - \int P'\left(x\right) g\left(x\right) dx$$
+donde aparece la integral de $g$ por un polinomio de grado inferior en una unidad al de $P$. Si $\int g$ es tambi\'en conocida, se puede aplicar la regla de Leibniz para simplificar la \'ultima integral, y as\'i sucesivamente. En particular si $f\left(x\right)= e^x$ \'o $f\left(x\right)=\sen \left(x\right)$ \'o $f\left(x\right)= \cos \left(x\right)$, todas cuyas primitivas sucesivas son conocidas, es claro que este m\'etodo permite calcular $\int P\left(x\right) f\left(x\right) dx$ para cualquier polinomio $P$. Por ejemplo:
+$$\int x^2 e^x dx = x^2 e^x -2\int xe^x dx= x^2 e^x - 2xe^x + 2\int e^x dx = \left(x^2 -2x +2\right)e^x$$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Integraci\'on de funciones racionales}
+
+\begin{defin}
+Diremos que una funci\'on racional $f\left(x\right) = \frac{P_n \left(x\right)}{Q_m \left(x\right)}$ es simple si el grado del polinomio $P_n \left(x\right)$ es menor que el del polinomio $Q_m \left(x\right)$ , o sea , si $n < m$.
+\end{defin}
+
+Si $n > m$ entonces podemos dividir los polinomios $P_n \left(x\right)$ y $Q_m \left(x\right)$ de tal forma que 
+\begin{equation}
+\frac{P_n \left(x\right)}{Q_m \left(x\right)} = p_{n-m} \left(x\right) + \frac{R_k \left(x\right)}{Q_m \left(x\right)} , \qquad \textrm{donde} \quad k<m
+\end{equation}
+%
+\begin{thm}[Teorema de descomposici\'on en Fracciones simples] 
+Supongamos que  $\frac{P_n \left(x\right)}{Q_m \left(x\right)}$ es una fracci\'on simple , y que el polinomio denominador se pueda factorizar de la siguiente forma \footnote{Esta descomposici\'on siempre es posible debido al \emph{Teorema fundamental del \'Algebra}}
+\begin{equation}
+Q_n \left(x\right) = c \left(x - x_1 \right)^{n_1} \cdots \left(x - x_p\right)^{n_p} {\left[\left(x - a_1\right)^2 + b_1 ^2\right]}^{m_1} \cdots {\left[\left(x - a_k\right)^2 + b_k ^2\right]}^{m_k}
+\end{equation}
+Siendo $n_i , m_j \geq 1$ y $b_j > 0$ para todo $i = 1 , \ldots , p$ , $j = 1 , \ldots , k$ . Los numeros $x_i \in \mathbb{R}$ son las raices de $Q_m \left(x\right)$  , de multiplicidad $n_i$ ,y los n\'umeros complejos $a_i \pm i b_j \in \mathbb{C}$ son las raices complejas de dicho polinomio, de multiplicidad $m_j$ .  Entonces la fracci\'on simple $\frac{P_n \left(x\right)}{Q_m \left(x\right)}$  se puede descomponer en la suma de \textbf{fracciones elementales simples} 
+\begin{eqnarray}
+	\lefteqn{\frac{P_n \left(x\right)}{Q_m \left(x\right)} = \frac{A_{1 1}}{x - x_1} + \ldots + \frac{A_{1 n_1}}{\left(x - x_1\right)^{n_1}} + \ldots }  {} \nonumber\\ 
+	&&  \quad + \frac{A_{p 1}}{\left(x - x_p\right)} + \ldots \frac{A_{p n_{p}}}{\left(x - x_p\right)^{n_p}} + \ldots \nonumber\\ 
+	&&  \quad + \frac{B_{1 1} x + C_{1 1}}{\left(x - a_1\right)^2 + b_1 ^2} + \ldots + \frac{B_{1 m_1}x + C_{1 m_1}}{\left[\left( x - a_1\right)^2 + b_1 ^2 \right]^{m_1}} + \ldots \nonumber\\
+	&&  \quad + \frac{B_{k 1} x + C_{k 1}}{\left(x - a_k\right)^2 + b_k ^2} + \ldots + \frac{B_{k m_k}x + C_{k m_k}}{\left[\left( x - a_k\right)^2 + b_k ^2 \right]^{m_k}} . 
+	\end{eqnarray}
+donde $A_{ij} , B_{ij} , C_{ij}$ son ciertas contantes reales
+\end{thm}
+%Este es un importante teorema de \'Algebra y se demuestra en los cursos de Variable Compleja. 
+Para determinar dichas constantes sumamos los t\'erminos de la derecha. N\'otese que el denominador cum\'un conincide con la descomposici\'on de $Q_n \left(x\right)$ y el numerador es un polinomio de grado a lo sumo $n$. Luego comparamos el polinomio numerador que se obtiene al sumar las fracciones simples con $P_n \left(x\right)$. Igualando los coeficientes de ambos obtendremos un sistema de $n$ ecuaciones con $n$ inc\'ognitas que podremos resolver para encontrar los coeficientes indeterminados $A_{ij} , B_{ij} , C_{ij}$.
+No obstante existen \emph{casos} en los que es posible hallar los coeficientes sin resolver un sistema de ecuaciones, los cuales detallar\'e en la resoluci\'on de problemas. 
+
+Luego de hallar las fracciones parciales, basta por lo tanto saber calcular las siguientes integrales:
+\begin{eqnarray}
+	&& \int \frac{dx}{\left(x-a\right)^n} = \int \left( x - a \right)^{-n} dx = \frac{\left(x-a\right)^{1-n}}{1-n}, \qquad n\in \mathbb{N}, \: n>1 \nonumber	\\
+	&& \int \frac{dx}{x-a} = \ln{|x - a|} \nonumber \\
+	&& \int \frac{Cx + D}{\left[\left(x - a\right)^2 + b^2\right]^n} dx, \qquad b \neq 0 \nonumber
+\end{eqnarray}
+Esta ultima integral se simplifica primero mediante un cambio de variable $x-a = bu$ , que la transforma en una integral mas simple del tipo
+$$\int \frac{Au + B}{\left(u^2 + 1 \right)^n} du = A\int \frac{u \: du}{\left(u^2 +1\right)^n} + B\int \frac{du}{\left(u^2 + 1 \right)^n}$$ 
+La primera integral se calcula f\'acilmente mediante el cambio $u^2 + 1 = v$ , obteniendose:
+\begin{displaymath}
+\int \frac{u}{\left(u^2 + 1\right)^n} du = \frac{1}{2} \int v^{-n} dv = \left\{ \begin{array}{ll} \frac{1}{2}\ln{|v|} = \frac{1}{2} \ln{\left(u^2 + 1\right)} , & n=1 \\ 
+\frac{v^{1-n}}{2 \left( 1 - n \right)} = \frac{\left(u^2 + 1 \right)^{1-n}}{2 \left( 1 - n \right)} , & n>1  \end{array} \right. 
+\end{displaymath}
+Por lo tanto, el problema de integrar una funci\'on racional arbitraria se reduce a \'ultima instancia al problema de calcular la integral
+$$I_n \left(u\right) = \int \frac{du}{\left(u^2 + 1\right)^n} , \qquad n \in \mathbb{N}$$
+Si $n=1$ , ya hemos visto que $I_1 \left(u\right) = \arctan u$. Si $n \in \mathbb{N}$ , integrando por partes obtenemos
+
+\begin{eqnarray}
+I_n \left(u\right) &=& u\frac{1}{\left(u^2 +1\right)^n} - \int u \frac{-2nu \:du}{\left( u^2 + 1\right)^{n+1}} \nonumber \\ 
+&=& \frac{u}{\left( u^2 + 1\right)^n} + 2n \int \frac{u^2 du}{\left(u^2 +1 \right)^{n+1}}  \nonumber\\  
+&=& \frac{u}{\left(u^2 +1\right)^n} + 2n \left[ I_n \left(u\right) + I_{n+1} \left(u\right)\right]\nonumber
+\end{eqnarray}
+
+En cosecuencia
+\begin{equation}
+I_{n+1} \left(u \right) = \frac{2n-1}{2n}I_n \left(u\right) + \frac{1}{2n}\frac{u}{\left(u^2 +1 \right)^n}, \qquad \forall \: n \in \mathbb{N}
+\end{equation}
+F\'ormula que permite calcular recursivamente\footnote{\emph{``To iterate is human, to recurse divine.'' }L. Peter Deutsch } $I_n \left(u \right)$ para todo $n \in \mathbb{N}$ a partir de $I_1 \left(u \right) = \arctan u$ . Por lo tanto, hemos demostrado que  \emph{la integral de una funci\'on racional es una funci\'on elemental expresable en t\'erminos de funciones racionales, logaritmos y arcotangentes}.
+
+%%%
+
+\subsubsection{Factores lineales no repetidos}
+Si $Q_m \left(x\right)$ tiene $m$ ceros reales y simples, o sea, si su factorizaci\'on es de la forma
+$$Q_m \left(x\right)= \left(x-x_1\right)\left(x-x_2\right)\ldots\left(x-x_{m-1}\right)\left(x-x_m\right)$$
+entonsces $\frac{P_n\left(x\right)}{Q_m \left(x\right)}$ se puede descomponer en las fracciones \emph{elementales simples}
+$$\frac{P_n\left(x\right)}{Q_m \left(x\right)} = \frac{A_1}{\left(x-x_1\right)}+\frac{A_2}{\left(x-x_2\right)}+ \ldots + \frac{A_{m-1}}{\left(x-x_{m-1}\right)}+\frac{A_m}{\left(x-x_m\right)}$$
+Donde $A_1, \ldots, A_m$ se calculan por la f\'ormula
+\begin{equation}
+A_k = \lim_{x\rightarrow x_k} \frac{P_n \left(x\right)\left(x-x_k\right)}{Q_m\left(x\right)} \:, \qquad k=1,2, \ldots , m
+\end{equation}
+\begin{ejm}
+Calcular $\int \frac{x-1}{x^3-x^2-2x}dx$. Primero encontramos las fracciones mas elementales
+$$\frac{x-1}{x^3-x^2-2x}=\frac{x-1}{x\left(x-2\right)\left(x+1\right)}=\frac{A_1}{x}+\frac{A_2}{x-2}+\frac{A_3}{x+1}$$
+Luego, aplicando lo mencionado anteriormente:
+$$A_1=\lim_{x\rightarrow 0} \frac{\left(x-1\right)x}{x\left(x-2\right)\left(x+1\right)}=\frac{1}{2} \: , \qquad A_2= \lim_{x\rightarrow 2} \frac{\left(x-1\right)\left(x-2\right)}{x\left(x-2\right)\left(x+1\right)} = \frac{1}{6}$$
+$$A_3 = \lim_{x\rightarrow -1} \frac{\left(x-1\right)\left(x+1\right)}{x\left(x-2\right)\left(x+1\right)}= -\frac{2}{3} \: .$$
+Finalmente, integrando:
+$$\int \frac{x-1}{x^3-x^2-2x}dx = \int \left(\frac{1/2}{x}+\frac{1/6}{x-2} +\frac{-2/3}{x+1}\right)dx  =\frac{1}{2}\ln{|x|} +\frac{1}{6}\ln{|x-2|} -\frac{2}{3}\ln{|x+1|}$$
+Otra manera\footnote{F\'acilmente demostrable teniendo en cuenta que $Q'_n\left(x\right)=\sum^{n}_{i=1}\prod_{j\neq 1}\left(x-x_j\right)$} de calcular los coeficientes ser\'ia de la siguiente forma:
+$$A_k=\frac{P_n\left(x_k\right)}{Q'_m\left(x_k\right)}$$
+
+Ahora para el ejemplo anterior tenemos:
+$$A_k= \left[\frac{x-1}{\left(x^3-x^2-2x\right)'}\right]_{x=k}= \left[\frac{x-1}{3x^2-2x-2}\right]_{x=k}$$
+luego
+$$A_1=\left[\frac{x-1}{3x^2-2x-2}\right]_{x=0}=\frac{1}{2} \: , \qquad A_2=\left[\frac{x-1}{3x^2-2x-2}\right]_{x=2}=\frac{1}{6}$$
+$$A_3=\left[\frac{x-1}{3x^2-2x-2}\right]_{x=-1}=-\frac{2}{3}$$
+\end{ejm}
+
+%%%
+
+\subsubsection{Factores lineales repetidos}
+Si $Q_m \left(x\right)$ se puede descomponear en factores lineales y algunos se repiten. Supongamos que $\left(x-x_1\right)$ se repite $k$ veces, o sea se descompone en: 
+$$Q_m \left(x\right)=\left(x-x_1\right)^k H_{m-k}\left(x\right)$$
+con $H_{m-k} \left(x_1\right) \neq 0$, entonces $\frac{P_n \left(x\right)}{Q_m \left(x\right)}$ se descompone en la forma:
+$$\frac{P_n \left(x\right)}{Q_m \left(x\right)} = \frac{P_n \left(x\right)}{\left(x-x_1\right)^k H_{m-k}\left(x\right)} = \frac{A_1}{\left(x-x_1\right)^k} + \frac{A_2}{\left(x-x_1\right)^{k-1}} + \ldots + \frac{A_k}{\left(x-x_1\right)}+ \frac{R\left(x\right)}{H_{m-k}\left(x\right)}$$
+Multiplicando por $\left(x-x_1\right)$, obtenemos:
+$$\frac{P_n \left(x\right)}{Q_m \left(x\right)} = A_1+A_1\left(x-x_1\right)+\ldots+A_k\left(x-x_k\right)^{k-1}+ \left(x-x_1\right)^k \frac{R\left(x\right)}{H_{m-k} \left(x\right)}$$
+De aqui se deduce que $A_1=\frac{P_n\left(x_1\right)}{H_{m-k}\left(x_1\right)}$, $A_2=\frac{d}{dx}\left(\frac{P_n\left(x_1\right)}{H_{m-k}\left(x_1\right)}\right)$; en general:
+\begin{equation}
+A_k = \frac{1}{\left(k-1\right)!}\frac{d^{k-1}}{dx^{k-1}}\left(\frac{P_n\left(x_1\right)}{H_{m-k}\left(x_1\right)}\right)
+\end{equation}
+\begin{ejm}
+Calcular $\int \frac{5x^2-23x}{\left(2x-2\right)\left(2x+4\right)^4} \: dx$, esta es una integral un poco m\'as complicada, primero hallamos las fracciones parciales:
+\begin{eqnarray}
+\lefteqn {\frac{5x^2-23x}{\left(2x-2\right)\left(2x+4\right)^4} = \frac{1}{32}\frac{5x^2-23x}{\left(x-1\right)\left(x+2\right)} }  \nonumber \\
+&& \qquad \qquad \qquad \: \: = \frac{1}{32}\left[\frac{A_1}{\left(x+2\right)^4} + \frac{A_2}{\left(x+2\right)^3} + \frac{A_3}{\left(x+2\right)^2} + \frac{A_4}{\left(x+2\right)} +\frac{B_1}{\left(x-1\right)}\right] \nonumber
+\end{eqnarray}
+Hallamos los coeficientes:
+\begin{eqnarray}
+	&& A_1=\frac{1}{0!}\left[\frac{5x^2-23x}{x-1}\right]_{x=-2} = -22 \nonumber \\
+	&& A_2=\frac{1}{1!}\left[\frac{d}{dx}\left(\frac{5x^2-23x}{x-1}\right)\right]_{x=-2} = \left[\frac{5x^2-10x+23}{\left(x-1\right)^2}\right]_{x=-2} = 7\nonumber \\
+	&& A_3=\frac{1}{2!}\left[\frac{d^2}{dx^2}\left(\frac{5x^2-23x}{x-1}\right)\right]_{x=-2} = \frac{1}{2!}\left[\frac{-36}{\left(x-1\right)^3}\right]_{x=-2} = \frac{2}{3} \nonumber \\
+	&& A_4=\frac{1}{3!}\left[\frac{d^3}{dx^3}\left(\frac{5x^2-23x}{x-1}\right)\right]_{x=-2} = \frac{1}{3!}\left[\frac{108}{\left(x-1\right)^4}\right]_{x=-2} = \frac{2}{9} \nonumber \\
+	&& B_1=\frac{1}{0!}\left[\frac{5x^2-23x}{\left(x+2\right)^4}\right]_{x=1} = -\frac{2}{9} \nonumber
+\end{eqnarray}
+Finalmente integramos:
+{\footnotesize
+\begin{eqnarray}
+	\int \frac{5x^2-23x}{\left(2x-2\right)\left(2x+4\right)^4}dx &=& \frac{1}{32}\int \left[\frac{-22}{\left(x+2\right)^4} + \frac{7}{\left(x+2\right)^3} + \frac{2/3}{\left(x+2\right)^2} + \frac{2/9}{\left(x+2\right)} +\frac{-2/9}{\left(x-1\right)}\right] dx \nonumber \\
+	&=& \frac{1}{32}\left[\frac{22}{3\left(x+2\right)^3} - \frac{7}{2\left(x+2\right)^2} - \frac{2}{3\left(x+2\right)} + \frac{2}{9}\ln{|x+2|} - \frac{2}{9}\ln{|x-1|}\right] \nonumber
+\end{eqnarray}
+}
+\end{ejm}
+%\subsubsection{Factores cuadr\'aticos}
+
+%\subsubsection{Factores cuadr\'aticos repetidos}
+
+\subsection{Integrales reducibles a integrales de funciones racionales}
+\subsubsection{De la forma $\int R\left(e^x\right)dx$}
+Las integrales de la forma $\int R\left(e^x\right)dx $ donde $R$ es una funci\'on racional se reducen a la integral de una funci\'on racional mediante el cambio de variable $u=e^x$:
+\begin{equation}
+	\int R\left(e^x\right)dx = \left\{ \begin{array}{c}
+	u=e^x \\ du=e^xdx
+	\end{array} \right\} =\left[\int \frac{R\left(u\right)}{u}dx\right]_{u=e^x} 
+\end{equation}
+\subsubsection{De la forma $\int R\left(\sen{x},\cos{x}\right)dx$}\label{itrig}
+La integral de la forma:$\int R\left(\sen{x},\cos{x}\right)dx$ donde $R\left(s,t\right)$ es una funci\'on racional de dos variables $s$ y $t$, tambi\'en se reduce a la integral de una funci\'on racional, mediante el cambio de variable $u=\tan{x}$:
+\begin{eqnarray}
+	\int R\left(\sen{x},\cos{x}\right)dx &=& \left\{ \begin{array}{lr}
+		u=\tan{x} & dx=\frac{2du}{1+u^2} \\
+	\sen{x}=\frac{2u}{1+u^2} & \cos{x}=\frac{1-u^2}{1+u^2}\end{array} \right\}  \nonumber \\ 
+	&=& \int\frac{2}{1+u^2}R\left(\frac{2u}{1+u^2},\frac{1-u^2}{1+u^2}\right)dx
+\end{eqnarray}
+Existen varios tipos de integrales trigonom\'etricas que se pueden \emph{racionalizar} con cambios m\'as sencillos. Ellas son las siguientes:
+\begin{eqnarray}
+\int f(\sen x ,\cos x) dx \textrm{, donde } f(-\sen x , \cos x)= -f(\sen x ,\cos x)\textrm{, cambio } t=\cos x \nonumber\\
+\int f(\sen x ,\cos x) dx \textrm{, donde } f(\sen x , -\cos x)= -f(\sen x ,\cos x)\textrm{, cambio } t=\sen x \nonumber\\
+\int f(\sen x ,\cos x) dx \textrm{, donde } f(-\sen x , -\cos x)= f(\sen x ,\cos x)\textrm{, cambio } t=\tan x \nonumber
+\end{eqnarray}
+\subsubsection{De la forma $\int R\left(x,\sqrt{\frac{ax+b}{cx+d}}\right)dx$}
+Las integrales de la forma
+$$\int R\left(x,\sqrt{\frac{ax+b}{cx+d}}\right)dx$$
+donde de nuevo $R$ es una funci\'on racional de dos variable y
+$$\Delta =ad-bc \neq 0$$
+Tambien se reducen a la integral de una funci\'on racional mediante el cambio de variable
+$$u= \sqrt{\frac{ax+b}{cx+d}} \Longrightarrow x=\frac{du^2-b}{a-cu^2}$$
+en efecto
+$$du=\frac{\Delta}{2u}\frac{dx}{(cx+d)^2} = \frac{(a-cu^2)^2}{2\Delta u}dx$$
+de donde
+$$\int R\left(x,\sqrt{\frac{ax+b}{cx+d}} \right)dx = 2\Delta\left[\int \frac{u}{(a-cu^2)^2}R \left(\frac{du^2-b}{a-cu^2},u\right)du\right]_{u=\sqrt{\frac{ax+b}{cx+d}}}$$
+En particular, si R es una funci\'on racional de dos variables, la integral
+$$\int R(x,\sqrt{ax+b})dx \qquad a \neq 0$$
+se convierte mediante el cambio
+$$u=\sqrt{ax+b}$$
+en lka integral de una funci\'on racional:
+$$\int R(x,\sqrt{ax+b})dx= \frac{2}{a}\left[\int R\left(\frac{u^2 -b}{a},u\right)udu\right]_{u=\sqrt{ax+b}}$$
+\subsubsection{De la forma $\int R\left(x,\sqrt{ax^2+bx+c}\right)dx$}
+Las integrales del tipo
+$$\int R\left(x,\sqrt{ax^2+bx+c}\right)dx \qquad a\neq 0, \: \Delta=b^2-4ac\neq 0 $$
+Donde $R$ es una funci\'on racional de dos variables, no se transformanm en integrales de funciones racionales mediante el cambio $u=\sqrt{ax^2+bx+c}$,
+Para racionalizar esta integral, se efectua en primer lugar un cambio de variable lieal
+$$ax+\frac{b}{2}=\frac{\sqrt{\Delta}}{2}u$$
+que lo transforman en los siguientes tipos mas sencillos:
+\begin{align}
+& \int \tilde{R}\left(u, \sqrt{1-u^2}\right)du &&(a<0,\: \Delta>0) \label{eq:tip1}\\
+& \int \tilde{R}\left(u, \sqrt{u^2-1}\right)du &&(a>0,\: \Delta>0) \label{eq:tip2}\\
+& \int \tilde{R}\left(u, \sqrt{1+u^2}\right)du &&(a>0,\: \Delta<0) \label{eq:tip3}
+\end{align}
+Donde $\tilde{R}$ es de nuevo una funci\'on racional de dos variables. 
+
+Si la integral es del tipo \eqref{eq:tip1}, el cambio de variable
+$$u=\sen t,\qquad t\in\left[\frac{\pi}{2},-\frac{\pi}{2}\right]$$
+(\'o $u=\cos t$) la reduce a una integral trigonom\'etrica (secci\'on \ref{itrig}):
+$$\int \tilde{R}\left(u,\sqrt{1-u^2}\right)du=\left[\int \tilde{R}\left(\sen x, \cos x\right)\cos t dt\right]_{t=\arcsen x}$$
+donde se ha tenido en cuenta que $\cos t \geq 0$ si $-\frac{\pi}{2}\leq t\leq\frac{\pi}{2}$
+
+An\'alogamente si la integral es del tipo \eqref{eq:tip2} el cambio de variable
+$$u=\sec t, \qquad t\in \left[0,\pi\right]-\frac{\pi}{2}$$
+la reduce a una integral trigonom\'etrica (secci\'on \ref{itrig}):
+$$\int \tilde{R}\left(u,\sqrt{u^2 -1}\right)=\left[\int \tilde{R}\left(\sec t, \pm \tan t\right)\sec t \tan t dt \right]_{t=\arcsec u}$$
+donde el signo $+$ (resp. $-$) corresponde a $u \geq 1$ (resp. $u \leq -1$).
+
+Finalmente una integral del tipo \eqref{eq:tip3} se convierte de nuevo en una integral trigonom\'etrica (secci\'on \ref{itrig}) mediante el cambio
+$$u = \tan t, \qquad t\in \langle -\frac{\pi}{2},\frac{\pi}{2}\rangle$$
+En efecto
+$$\int \tilde{R}\left(u,\sqrt{1+u^2}\right)du=\left[\int \tilde{R}\left(\tan t, \sec t\right)\sec^2 t dt\right]_{t=\arctan u}$$ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Anexo}
+\subsection{Aplicaciones de la Integral Definida}
+\begin{enumerate}
+
+\item \textbf{\'Area de una figura plana asociada a una curva\footnote{Usando el teorema de Green, el \'area definida por el contorno $C$ simple, cerrado, positivamente-orientado es: $$A=\oint_C x dy=\oint_C y dx$$}}
+\begin{align}
+	&A=\int^b_a |f(x)|dx && \text{Expl\'icita}\\
+	&A=\left|\int^{t_1}_{t_0} y(t)x'(t)\right|dt && \text{Param\'etrica}\\
+	&A=\frac{1}{2}\int^{\theta_1}_{\theta_0} \rho (\theta) ^2 d\theta && \text{Polar}
+\end{align}
+%%
+\item \textbf{Longitud de arco de una curva plana}
+\begin{align}
+	&L=\int^b_a \sqrt{1+f'(x)^2}dx && \text{Expl\'icita}\\
+	&L=\int^{t_1}_{t_0} \sqrt{x'(t)^2+y'(t)^2}dt && \text{Param\'etrica}\\
+	&L=\int^{\theta_1}_{\theta_0} \sqrt{\rho (\theta) ^2+\rho' (\theta) ^2} d\theta && \text{Polar}
+\end{align}
+%%
+\item \textbf{Volumen del s\'olido de revoluci\'on asociado a una curva plana}
+
+\begin{align}
+	&V=\int^b_a f(x)^2 dx &&\text{Alrededor del eje }X\\
+	&V= 2\pi\int^b_a x|f(x)|dx &&\text{Alrededor del eje }Y\\
+	&V=\pi\left|\int^{t_1}_{t_0} y(t)^2 x'(t) dt\right| && \text{Param\'etrica}\\
+	&V=\frac{2\pi}{3}\int^{\theta_1}_{\theta_0}\rho(\theta)^3 \sen \theta d\theta  && \text{Polar}
+\end{align}
+%%
+\item \textbf{Volumen de un solido de \'area conocida}
+\begin{equation}
+	V=\int^b_a S(x)dx
+\end{equation}
+%%
+\item \textbf{\'Area de una superficie de revoluci\'on alrededor del eje $x$ generada por una curva plana}
+\begin{align}
+	&A=2\pi\int^b_a |f(x)|\sqrt{1+f'(x)^2}dx &&\text{Expl\'icita}\\
+	&A=2\pi \int^{t_1}_{t_0}|y(t)| \sqrt{x'(t)^2+y'(t)^2}dt &&\text{Param\'etrica}\\
+	&A=2\pi\int^{\theta_1}_{\theta_0} \rho (\theta) |\sen{\theta}| \sqrt{\rho (\theta)^2+\rho'(\theta) ^2} d\theta &&\text{Polar}
+\end{align}		
+%%
+\item \textbf{Centro de gravedad (baricentro) de una curva plana con una densidad de masa $\delta$}
+
+		\begin{enumerate}
+			\item[] Explicita $(x_0 ,x_0)$ 
+\begin{eqnarray}
+x_0=\frac{\int^b_a x\delta(x)\sqrt{1 +f'(x)^2} dx}{\int^b_a \delta(x)\sqrt{1 +f'(x)^2} dx}\\
+y_0=\frac{\int^b_a f(x)\delta(x)\sqrt{1 +f'(x)^2} dx}{\int^b_a \delta(x)\sqrt{1 +f'(x)^2} dx}
+\end{eqnarray}
+
+			\item[] Param\'etrica $(x_0,y_0)$
+\begin{eqnarray}
+x_0=\frac{\int^{t_1}_{t_0} x(t)\delta(t) \sqrt{x'(t)^2+y'(t)^2}dt}{\int^{t_1}_{t_0} \delta(t) \sqrt{x'(t)^2+y'(t)^2}dt}\\
+y_0=\frac{\int^{t_1}_{t_0} y(t)\delta(t) \sqrt{x'(t)^2+y'(t)^2}dt}{\int^{t_1}_{t_0} \delta(t) \sqrt{x'(t)^2+y'(t)^2}dt}
+\end{eqnarray}
+			\item[] Polar $(x_0,y_0)$ 
+\begin{eqnarray}
+x_0=\frac{\int^{\theta_1}_{\theta_0}\delta(\theta)\rho(\theta)\cos\theta\sqrt{\rho(\theta)^2+\rho'(\theta)^2}d\theta}{\int^{\theta_1}_{\theta_0} \delta(\theta)\sqrt{\rho(\theta) ^2+\rho'(\theta)^2}d\theta}\\
+y_0=\frac{\int^{\theta_1}_{\theta_0} \delta(\theta)\rho (\theta)\sen \theta \sqrt{\rho(\theta)^2+\rho'(\theta)^2}d\theta}{\int^{\theta_1}_{\theta_0}\delta(\theta)\sqrt{\rho(\theta)^2+\rho'(\theta)^2}d\theta}
+\end{eqnarray}
+		\end{enumerate}
+
+	\item \textbf{Momento de Inercia de una curva plana con densidad $\delta$, con respecto a una recta o un punto}
+		\begin{enumerate}
+			\item[] Expl\'icita: $d(x)$ es la distancia del punto $(x,f(x))$ a la recta o al punto.
+\begin{equation}
+I=\int^b_a d(x)^2\delta(x)\sqrt{1+f'(x)^2}dx
+\end{equation}
+			\item[] Param\'etrica: $d(t)$ es la distancia del punto $(x(t),y(t))$ a la recta o al punto. 
+\begin{equation}
+I=\int^{t_1}_{t_0} d(t)^2 \delta(t) \sqrt{x'(t)^2+y'(t)^2}dt
+\end{equation}
+			\item[] Polar: $d(\theta)$ es la distancia del punto $(\theta,\rho(\theta))$ a la recta o al punto. 
+\begin{equation}
+I=\int^{\theta_1}_{\theta_0} d(\theta)^2\delta(\theta)\sqrt{\rho(\theta)^2+\rho'(\theta)^2}d\theta
+\end{equation}
+		\end{enumerate}
+
+	\end{enumerate}
+\subsection{Tabla de integrales}
+Coming soon :-), mientras tanto, puedes echarle un vistazo al libro \emph{CRC Standard Mathematical Tables and Formulae}\footnote{I love this book} con una tabla de nada menos 708 integrales, eso s\'i bien ordenaditas ;-) 
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\end{document}
